@@ -146,6 +146,20 @@
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LinkHubBLL\LinkHubBLL.csproj">
+      <Project>{daf50815-102b-42e9-a0c7-909cb7d5046d}</Project>
+      <Name>LinkHubBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LinkHubBOL\LinkHubBOL.csproj">
+      <Project>{c42f28f3-73e3-48d9-b686-0ae3da436a79}</Project>
+      <Name>LinkHubBOL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LinkHubDAL\LinkHubDAL.csproj">
+      <Project>{66d144eb-f9f9-4613-85f8-eac67bb6d7db}</Project>
+      <Name>LinkHubDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
