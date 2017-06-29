@@ -11,7 +11,8 @@ namespace LinkHubBOL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class tbl_Category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,9 +20,12 @@ namespace LinkHubBOL
         {
             this.tbl_Url = new HashSet<tbl_Url>();
         }
-    
+
+        [DisplayName("Category")]
         public int CategoryId { get; set; }
+        [DisplayName("Category")]
         public string CategoryName { get; set; }
+        [DisplayName("Description")]
         public string CategoryDesc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

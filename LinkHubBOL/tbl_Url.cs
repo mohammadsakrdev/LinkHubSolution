@@ -11,13 +11,18 @@ namespace LinkHubBOL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class tbl_Url
     {
         public int UrlId { get; set; }
+        [DisplayName("URL Title")]
         public string UrlTitle { get; set; }
+        [DisplayName("URL")]
         public string Url { get; set; }
+        [DisplayName("URL Description")]
         public string UrlDesc { get; set; }
+        [DisplayName("Category")]
         public Nullable<int> CategoryId { get; set; }
         public Nullable<int> UserId { get; set; }
         public string IsApproved { get; set; }
