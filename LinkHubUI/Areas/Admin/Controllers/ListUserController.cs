@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LinkHubBLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,58 @@ namespace LinkHubUI.Areas.Admin.Controllers
 {
     public class ListUserController : Controller
     {
-        // GET: Admin/ListUser
-        public ActionResult Index()
+        private UserBs db;
+
+        public ListUserController()
         {
-            return View();
+            db = new UserBs();
+        }
+        // GET: Admin/ListUser
+        public ActionResult Index(string SortOrder, string SortBy, string Page)
+        {
+            ViewBag.SortOrder = SortOrder;
+            ViewBag.OrderBy = SortBy;
+            var users = db.GetAll();
+
+            switch(SortBy)
+            {
+                case "UserEmail":
+                    switch(SortOrder)
+                    {
+                        case "Asc":
+                            users = users.OrderBy(x => x.UserEmail).ToList();
+                            break;
+                        case "Desc":
+                            users = users.OrderByDescending(x => x.UserEmail).ToList();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "Role":
+                    switch (SortOrder)
+                    {
+                        case "Asc":
+                            users = users.OrderBy(x => x.Role).ToList();
+                            break;
+                        case "Desc":
+                            users = users.OrderByDescending(x => x.Role).ToList();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            } // end switch
+            ViewBag.TotalPages = Math.Ceiling(db.GetAll().Count() / 10.0);
+
+            int page = int.Parse(Page == null ? "1" : Page);
+            ViewBag.Page = page;
+
+            users = users.Skip((page - 1) * 10).Take(10).ToList();
+
+            return View(users);
         }
     }
 }

@@ -136,6 +136,9 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Common\Views\BrowseURLs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ListUser\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ListCategory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -211,9 +214,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Category\" />
-    <Folder Include="Areas\Admin\Views\ListCategory\" />
-    <Folder Include="Areas\Admin\Views\ListUser\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Common\Models\" />
     <Folder Include="Areas\Security\Models\" />

@@ -12,6 +12,7 @@ namespace LinkHubBOL
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class tbl_Category
     {
@@ -24,8 +25,10 @@ namespace LinkHubBOL
         [DisplayName("Category")]
         public int CategoryId { get; set; }
         [DisplayName("Category")]
+        [Required]
         public string CategoryName { get; set; }
         [DisplayName("Description")]
+        [Required]
         public string CategoryDesc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

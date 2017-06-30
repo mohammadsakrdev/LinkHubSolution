@@ -1,0 +1,55 @@
+﻿@model IEnumerable<LinkHubBOL.tbl_Category>
+
+@{
+    ViewBag.Title = "List Category";
+}
+<script>
+    function ConfirmDelete() {
+        return confirm("Are uou sure you want to delete?");
+    };
+</script>
+@if(TempData["msg"] != null)
+{
+    <h3>@TempData["msg"]</h3>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Category Name", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), SortBy = "CategoryName" })
+        </th>
+        <th>
+            @Html.ActionLink("Category Description", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), SortBy = "CategoryDesc" })
+        </th>
+        <th>Delete</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryDesc)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryId }, new {onclick= "return ConfirmDelete()" })
+        </td>
+    </tr>
+}
+
+</table>
+@{
+    double TotalPages = @ViewBag.TotalPages;
+}
+@for (int i = 1; i <= TotalPages; i++)
+{
+    if (i == ViewBag.Page)
+    {
+        <b> @Html.ActionLink(i.ToString() + " ", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder), SortBy = (ViewBag.OrderBy == null ? "UserEmail" : ViewBag.OrderBy), Page = i })</b>
+    }
+    else
+    {
+        @Html.ActionLink(i.ToString() + " ", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder), SortBy = (ViewBag.OrderBy == null ? "UserEmail" : ViewBag.OrderBy), Page = i })
+    }
+}

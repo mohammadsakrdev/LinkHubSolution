@@ -12,6 +12,6 @@ namespace LinkHubUI.Areas.Admin.Controllers
         public ActionResult Index()
         {
             return View();
-        }
+        } // end method Index
     }
 }

@@ -9,17 +9,17 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UrlTitle)
+            @Html.ActionLink("Title", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), SortBy = "Title"})
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Url)
+            @Html.ActionLink("URL", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), SortBy = "Url" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UrlDesc)
+            @Html.ActionLink("Description", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), SortBy = "UrlDesc" })
         </th>
 
         <th>
-            @Html.DisplayNameFor(model => model.tbl_Category.CategoryName)
+            @Html.ActionLink("Category", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), SortBy = "Category" })
         </th>
 
     </tr>
@@ -42,3 +42,17 @@
 }
 
 </table>
+@{ 
+    double TotalPages = @ViewBag.TotalPages;
+}
+@for (int i = 1; i <= TotalPages; i++)
+{
+    if (i == ViewBag.Page)
+    {
+        <b> @Html.ActionLink(i.ToString() + " ", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder), SortBy = (ViewBag.OrderBy == null ? "Title" : ViewBag.OrderBy), Page = i })</b>
+    }
+    else
+    {
+        @Html.ActionLink(i.ToString() + " ", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder), SortBy = (ViewBag.OrderBy == null ? "Title" : ViewBag.OrderBy), Page = i })
+    }
+}
