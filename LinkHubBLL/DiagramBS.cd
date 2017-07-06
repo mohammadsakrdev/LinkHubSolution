@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LinkHubBLL.BaseBs">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAABAAAAAQ=</HashCode>
+      <FileName>BaseBs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LinkHubBLL.AdminBs" Collapsed="true">
+    <Position X="6.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AdminBs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LinkHubBLL.CategoryBs" Collapsed="true">
+    <Position X="7.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAgAEAAAA=</HashCode>
+      <FileName>CategoryBs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LinkHubBLL.CommonBs" Collapsed="true">
+    <Position X="4" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommonBs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LinkHubBLL.SecurityBs" Collapsed="true">
+    <Position X="1.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SecurityBs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LinkHubBLL.UrlBs" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAIAAAAAAAAAAAAAAEAAAAAAgAAgAAAAAA=</HashCode>
+      <FileName>UrlBs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LinkHubBLL.UserAreaBs" Collapsed="true">
+    <Position X="1.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserAreaBs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LinkHubBLL.UserBs" Collapsed="true">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEEAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAgAAAAAA=</HashCode>
+      <FileName>UserBs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

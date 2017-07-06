@@ -7,20 +7,21 @@ using System.Web.Mvc;
 
 namespace LinkHubUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "A")]
     public class ListUserController : Controller
     {
-        private UserBs db;
+        private AdminBs db;
 
         public ListUserController()
         {
-            db = new UserBs();
+            db = new AdminBs();
         }
         // GET: Admin/ListUser
         public ActionResult Index(string SortOrder, string SortBy, string Page)
         {
             ViewBag.SortOrder = SortOrder;
             ViewBag.OrderBy = SortBy;
-            var users = db.GetAll();
+            var users = db.UserBs.GetAll();
 
             switch(SortBy)
             {
@@ -53,7 +54,7 @@ namespace LinkHubUI.Areas.Admin.Controllers
                 default:
                     break;
             } // end switch
-            ViewBag.TotalPages = Math.Ceiling(db.GetAll().Count() / 10.0);
+            ViewBag.TotalPages = Math.Ceiling(db.UserBs.GetAll().Count() / 10.0);
 
             int page = int.Parse(Page == null ? "1" : Page);
             ViewBag.Page = page;

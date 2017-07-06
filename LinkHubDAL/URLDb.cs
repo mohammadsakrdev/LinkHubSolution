@@ -36,6 +36,7 @@ namespace LinkHubDAL
         public void Update(tbl_Url url)
         {
             db.Entry(url).State = EntityState.Modified;
+
         }
         public void Save()
         {

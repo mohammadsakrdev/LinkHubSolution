@@ -22,14 +22,31 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "Common" }, new { @class = "" })</li>
-                    <li>@Html.ActionLink("Category", "Index", "Category", new { area = "Admin" }, new { @class = "" })</li>
-                    <li>@Html.ActionLink("List Categories", "Index", "ListCategory", new { area = "Admin" }, new { @class = "" })</li>
                     <li>@Html.ActionLink("Register", "Index", "Register", new { area = "Security" }, new { @class = "" })</li>
-                    <li>@Html.ActionLink("Submit URL", "Index", "URL", new { area = "User" }, new { @class = "" })</li>
-                    <li>@Html.ActionLink("Approve", "Index", "ApproveURLs", new { area = "Admin" }, new { @class = "" })</li>
                     <li>@Html.ActionLink("Browse URLs", "Index", "BrowseURLs", new { area = "Common" }, new { @class = "" })</li>
-                    <li>@Html.ActionLink("List User", "Index", "ListUser", new { area = "Admin" }, new { @class = "" })</li>
-                    <li>@Html.ActionLink("Login", "Index", "Login", new { area = "Security" }, new { @class = "" })</li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("A"))
+                        {
+                        <li>@Html.ActionLink("Category", "Index", "Category", new { area = "Admin" }, new { @class = "" })</li>
+                        <li>@Html.ActionLink("List Categories", "Index", "ListCategory", new { area = "Admin" }, new { @class = "" })</li>
+
+                        <li>@Html.ActionLink("Approve", "Index", "ApproveURLs", new { area = "Admin" }, new { @class = "" })</li>
+                        <li>@Html.ActionLink("List User", "Index", "ListUser", new { area = "Admin" }, new { @class = "" })</li>
+                        }
+                        if (User.IsInRole("A") || User.IsInRole("U"))
+                        {
+                        <li>@Html.ActionLink("Submit URL", "Index", "URL", new { area = "User" }, new { @class = "" })</li>
+                        <li>@Html.ActionLink("Logout", "SignOut", "Login", new { area = "Security" }, new { @class = "" })</li>
+                        }
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Index", "Login", new { area = "Security" }, new { @class = "" })</li>
+
+                    }
+
                 </ul>
             </div>
         </div>

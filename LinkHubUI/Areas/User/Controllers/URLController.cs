@@ -8,25 +8,22 @@ using System.Web.Mvc;
 
 namespace LinkHubUI.Areas.User.Controllers
 {
+    [Authorize(Roles = "A,U")]
     public class URLController : Controller
     {
-        private UrlBs urlbs;
-        private CategoryBs catbs;
-        private UserBs userbs;
+        private UserAreaBs db;
 
         public URLController()
         {
-            urlbs = new UrlBs();
-            catbs = new CategoryBs();
-            userbs = new UserBs();
+            db = new UserAreaBs();
         }
 
         // GET: User/URL
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.CategoryId = new SelectList ( catbs.GetAll(), "CategoryId", "CategoryName");
-            ViewBag.UserId = new SelectList(userbs.GetAll(), "UserId", "UserEmail");
+            ViewBag.CategoryId = new SelectList ( db.CategoryBs.GetAll(), "CategoryId", "CategoryName");
+            ViewBag.UserId = new SelectList(db.UserBs.GetAll(), "UserId", "UserEmail");
             return View();
         }
 
@@ -35,16 +32,18 @@ namespace LinkHubUI.Areas.User.Controllers
         {
             try
             {
+                url.IsApproved = "P";
+                url.UserId = db.UserBs.GetAll().Where(x => x.UserEmail == User.Identity.Name).FirstOrDefault().UserId;
                 if (ModelState.IsValid)
                 {
-                    urlbs.Insert(url);
+                    db.UrlBs.Insert(url);
                     TempData["msg"] = "Created Successfully";
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    ViewBag.CategoryId = new SelectList(catbs.GetAll(), "CategoryId", "CategoryName");
-                    ViewBag.UserId = new SelectList(userbs.GetAll(), "UserId", "UserEmail");
+                    ViewBag.CategoryId = new SelectList(db.CategoryBs.GetAll(), "CategoryId", "CategoryName");
+                    ViewBag.UserId = new SelectList(db.UserBs.GetAll(), "UserId", "UserEmail");
                     return View("Index");
                 }
             }

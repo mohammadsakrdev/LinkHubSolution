@@ -8,19 +8,20 @@ using System.Web.Mvc;
 
 namespace LinkHubUI.Areas.Common.Controllers
 {
+    [AllowAnonymous]
     public class BrowseURLsController : Controller
     {
-        private UrlBs db;
+        private CommonBs db;
         public BrowseURLsController()
         {
-            db = new UrlBs();
+            db = new CommonBs();
         }
         // GET: Common/BrowseURLs
         public ActionResult Index(string SortOrder, string SortBy, string Page)
         {
             ViewBag.SortOrder = SortOrder;
             ViewBag.SortBy = SortBy;
-            var urls = db.GetAll().Where(u => u.IsApproved == "A").ToList();
+            var urls = db.UrlBs.GetAll().Where(u => u.IsApproved == "A").ToList();
 
             switch(SortBy)
             {
@@ -79,7 +80,7 @@ namespace LinkHubUI.Areas.Common.Controllers
                 default:
                     break;
             } // end switch
-            ViewBag.TotalPages = Math.Ceiling(db.GetAll().Where(u => u.IsApproved == "A").ToList().Count() / 10.0);
+            ViewBag.TotalPages = Math.Ceiling(db.UrlBs.GetAll().Where(u => u.IsApproved == "A").ToList().Count() / 10.0);
             int page = int.Parse(Page == null ? "1" : Page);
             ViewBag.Page = page;
 

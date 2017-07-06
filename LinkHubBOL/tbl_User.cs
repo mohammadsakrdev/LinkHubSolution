@@ -11,7 +11,9 @@ namespace LinkHubBOL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+
     public partial class tbl_User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,11 +23,30 @@ namespace LinkHubBOL
         }
     
         public int UserId { get; set; }
+        [Required]
+        [EmailAddress]
+        [UniqueEmail]
         public string UserEmail { get; set; }
+        [Required]
         public string Password { get; set; }
         public string Role { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Url> tbl_Url { get; set; }
     }
+
+    public class UniqueEmailAttribute : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext contex)
+        {
+            LinkHubDbEntities db = new LinkHubDbEntities();
+            string emailValue = value.ToString();
+            int count = db.tbl_User.Where(x => x.UserEmail == emailValue).Count();
+            if (count != 0)
+            {
+                return new ValidationResult("Email is existed");
+            }
+            return ValidationResult.Success;
+        }
+    } // end class UniqueUrlAttribute
 }

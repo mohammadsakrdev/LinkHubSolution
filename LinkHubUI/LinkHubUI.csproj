@@ -139,6 +139,7 @@
     <Content Include="Areas\Admin\Views\ListUser\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ListCategory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Security\Views\Register\Index.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -217,7 +218,6 @@
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Common\Models\" />
     <Folder Include="Areas\Security\Models\" />
-    <Folder Include="Areas\Security\Views\Register\" />
     <Folder Include="Areas\User\Models\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
