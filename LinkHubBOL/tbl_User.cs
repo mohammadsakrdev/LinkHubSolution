@@ -23,11 +23,11 @@ namespace LinkHubBOL
         }
     
         public int UserId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "you should enter mail")]
         [EmailAddress]
         [UniqueEmail]
         public string UserEmail { get; set; }
-        [Required]
+        [Required(ErrorMessage ="you should enter password")]
         public string Password { get; set; }
         public string Role { get; set; }
     

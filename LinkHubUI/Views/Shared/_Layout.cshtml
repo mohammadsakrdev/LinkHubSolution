@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - LinkHub</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -24,7 +24,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "Common" }, new { @class = "" })</li>
                     <li>@Html.ActionLink("Register", "Index", "Register", new { area = "Security" }, new { @class = "" })</li>
                     <li>@Html.ActionLink("Browse URLs", "Index", "BrowseURLs", new { area = "Common" }, new { @class = "" })</li>
-
+                    <li>@Html.ActionLink("Quick URL Submit", "Index", "QuickURLSubmit", new { area = "Common" }, new { @class = "" })</li>
                     @if (User.Identity.IsAuthenticated)
                     {
                         if (User.IsInRole("A"))
@@ -56,6 +56,10 @@
         @RenderBody()
         <hr />
         <footer>
+            <blockquote class="blockquote-reverse">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+            </blockquote>
             <p>&copy; @DateTime.Now.Year - LinkHub</p>
         </footer>
     </div>

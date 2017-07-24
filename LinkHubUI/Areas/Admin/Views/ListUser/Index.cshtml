@@ -4,8 +4,8 @@
     ViewBag.Title = "List Users";
 }
 
-<table class="table">
-    <tr>
+<table class="table table-hover table-striped">
+    <tr class="info">
         <th>
             @Html.ActionLink("EMail", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), SortBy = "UserEmail" })
         </th>
@@ -31,14 +31,16 @@
 @{
     double TotalPages = @ViewBag.TotalPages;
 }
-@for (int i = 1; i <= TotalPages; i++)
-{
-    if (i == ViewBag.Page)
+<ul class="pagination">
+    @for (int i = 1; i <= TotalPages; i++)
     {
-        <b> @Html.ActionLink(i.ToString() + " ", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder), SortBy = (ViewBag.OrderBy == null ? "UserEmail" : ViewBag.OrderBy), Page = i })</b>
+        if (i == ViewBag.Page)
+        {
+            <li class="active"> @Html.ActionLink(i.ToString() + " ", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder), SortBy = (ViewBag.OrderBy == null ? "Title" : ViewBag.OrderBy), Page = i })</li>
+        }
+        else
+        {
+            <li> @Html.ActionLink(i.ToString() + " ", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder), SortBy = (ViewBag.OrderBy == null ? "Title" : ViewBag.OrderBy), Page = i })</li>
+        }
     }
-    else
-    {
-        @Html.ActionLink(i.ToString() + " ", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder), SortBy = (ViewBag.OrderBy == null ? "UserEmail" : ViewBag.OrderBy), Page = i })
-    }
-}
+</ul>

@@ -22,15 +22,22 @@ namespace LinkHubUI.Areas.Security.Controllers
         {
             try
             {
-                if (Membership.ValidateUser(user.UserEmail, user.Password))
+                if (ModelState.IsValid)
                 {
-                    FormsAuthentication.SetAuthCookie(user.UserEmail, false);
-                    return RedirectToAction("Index", "Home", new { area = "Common" });
+                    if (Membership.ValidateUser(user.UserEmail, user.Password))
+                    {
+                        FormsAuthentication.SetAuthCookie(user.UserEmail, false);
+                        return RedirectToAction("Index", "Home", new { area = "Common" });
+                    }
+                    else
+                    {
+                        TempData["msg"] = "Login Failed";
+                        return RedirectToAction("Index");
+                    }
                 }
                 else
                 {
-                    TempData["msg"] = "Login Failed";
-                    return RedirectToAction("Index");
+                    return View("Index");
                 }
             } // end try
             catch(Exception e)
